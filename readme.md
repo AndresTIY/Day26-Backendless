@@ -35,9 +35,9 @@
 
 2) MVC
 MODEL
-- user: string
-- password
-- taskName: string
+- user: string noun
+- token
+- taskName: string noun , falls under what is a task
 - description: string
 - state: boolean
 - important: boolean
@@ -48,7 +48,7 @@ VIEW
 - task page view
   - has task name, description, state, important, due date
 - task view
-  - 
+  -
 
 CONTROLLER
 - when: user clicks login

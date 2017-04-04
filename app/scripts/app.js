@@ -6,7 +6,7 @@ export default function app() {
 
   const userLogin = {
     user: null,
-    password: null,
+    token: null,
   }
 
   const initialState = {
@@ -24,6 +24,10 @@ export default function app() {
     }
 
     switch(action.type){
+      case "LOGIN_USER":
+        var newState;
+
+
       case "NOOP":
         return currentState;
 
@@ -51,42 +55,58 @@ export default function app() {
 //   }
 // })
 //
-//   $.ajax({
-//     url: url + "/task_mgmt/users/login",
-//     method: 'POST',
-//     headers: {
-//       "application-id": appId,
-//       "secret-key": restKey,
-//       "Content-Type": "application/json",
-//       "application-type": "REST"
-//     },
-//     body: {
-//       "login": undefined,
-//       "password": undefined
-//     }
-//
-//   }).then(function(data,i,arr){
-//     console.log(data);
-//   })
+  // $.ajax({
+  //   url: url + "/v1/users/login",
+  //   method: 'POST',
+  //   headers: {
+  //     "application-id": appId,
+  //     "secret-key": restKey,
+  //     "Content-Type": "application/json",
+  //     "application-type": "REST"
+  //   },
+  //   data: {
+  //     "login": undefined,
+  //     "password": undefined
+  //   }
+  //
+  // }).then(function(data,i,arr){
+  //   console.log(data);
+  // })
 //
 
   //------login view-----------
   function loginView(store){
     let $htmlLogin = $(`
       <div class="login-card">
-        <label for="username">Use Your User Name To Log In</label>
-        <input id="username" type="text" name="" value="">
+        <label for="username">Use Your Email To Log In</label>
+        <input id="username" type="email" name="" value="">
         <label for="password">The password is possibly "password"</label>
         <input id="password" type="password" name="" value="">
         <button>Enter</button>
       </div>`)
 
 
+
+
+    $($htmlLogin).find('button').on('click', function(e){
+      let $user = $($htmlLogin).find('#username').val();
+      let $pw = $($htmlLogin).find('#password').val();
+      console.log('login button clicks');
+
+      // store.dispatch({type:"VALIDATE_USER", user: $user, password: $pw})
+
+    })
+
+
     return $htmlLogin
 
   }//end of loginView
 
+  function taskView(store){
+    let $htmlTasks = $(``)
 
+    return $htmlTasks
+  }
 
 
 
