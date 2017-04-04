@@ -1,6 +1,6 @@
 import { createStore } from 'redux'
 export default function app() {
-  const url = 'http://api.backendless.com/v1/data';
+  const url = 'http://api.backendless.com/v1';
   const appId = '892747C4-CCC9-E96F-FF91-006B50E61400';
   const restKey = '30D82F23-700A-52A1-FF7B-1BC275C5F700';
 
@@ -24,6 +24,29 @@ export default function app() {
     }
 
     switch(action.type){
+      case "VALIDATE_USER":
+
+      $.ajax({
+        url: url + "/users/login",
+        method: 'POST',
+        headers: {
+          "application-id": appId,
+          "secret-key": restKey,
+          "Content-Type": "application/json",
+          "application-type": "REST"
+        },
+        data: JSON.stringify({
+          login: action.user,
+          password: action.password
+        })
+
+      }).then(function(data,success,xhr){
+        console.log(data);
+        console.log(success);
+      })
+
+
+
       case "LOGIN_USER":
         var newState;
 
@@ -91,9 +114,7 @@ export default function app() {
     $($htmlLogin).find('button').on('click', function(e){
       let $user = $($htmlLogin).find('#username').val();
       let $pw = $($htmlLogin).find('#password').val();
-      console.log('login button clicks');
-
-      // store.dispatch({type:"VALIDATE_USER", user: $user, password: $pw})
+      store.dispatch({type:"VALIDATE_USER", user: $user, password: $pw})
 
     })
 

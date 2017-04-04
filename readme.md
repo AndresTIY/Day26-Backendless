@@ -17,7 +17,7 @@
 - Need to save a record to the Database
 - To make any requests to backendless, I will need these 3 things that need to be stored in the app somewhere
   - backendless endpoint URL:
-    http://api.backendless.com/v1/data/Task_Management (i think?)
+    http://api.backendless.com/v1/data/task_mgmt(i think?)
   - application ID: 892747C4-CCC9-E96F-FF91-006B50E61400
   - REST secret key: 30D82F23-700A-52A1-FF7B-1BC275C5F700
 
