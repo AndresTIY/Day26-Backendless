@@ -24,9 +24,11 @@ export default function app() {
     }
 
     switch(action.type){
+      case "NOOP":
+        return currentState;
 
       default:
-      return currentState;
+        return currentState;
     }
 
   }//end of reducer
@@ -37,6 +39,8 @@ export default function app() {
     let state = store.getState();
     $('#app').html(state.view(store))
   }
+  store.subscribe(render);
+  store.dispatch({type:'NOOP'})
 
 //   $.ajax({
 //   url: url + "/task_mgmt",
@@ -65,6 +69,22 @@ export default function app() {
 //     console.log(data);
 //   })
 //
+
+  //------login view-----------
+  function loginView(store){
+    let $htmlLogin = $(`
+      <div class="login-card">
+        <label for="username">Use Your User Name To Log In</label>
+        <input id="username" type="text" name="" value="">
+        <label for="password">The password is possibly "password"</label>
+        <input id="password" type="password" name="" value="">
+        <button>Enter</button>
+      </div>`)
+
+
+    return $htmlLogin
+
+  }//end of loginView
 
 
 
