@@ -32,3 +32,24 @@
 - Login as a user
 - Request data from server
 - Save record to db
+
+2) MVC
+MODEL
+- user: string
+- password
+- taskName: string
+- description: string
+- state: boolean
+- important: boolean
+- due date: string or numbers
+VIEW
+- login view
+  - has a username and password input fields, login button
+- task page view
+  - has task name, description, state, important, due date
+- task view
+  - 
+
+CONTROLLER
+- when: user clicks login
+- what: user sees task page
