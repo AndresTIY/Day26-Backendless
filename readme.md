@@ -53,33 +53,10 @@ CONTROLLER
 - what: user sees task page
 
 Currently Working On
-- task view, retrieving data from state, looping through it and plugging it in the taskItem 
+- add other list items like due date, important, state?
 
 Questions
-- a task should have blah blah and state. what is state in this context?
 
+- have add task btn send data
 
-
-
-DATA LOOKS LIKE
-```js
-{
-  {
-    "offset": 0,
-    "data": [
-      {
-        "important": true,
-        "task": "find meetup events for next week",
-        "created": 1491420359000,
-        "due_date": 1491670800000,
-        "___class": "task_table",
-        "description": "look up events going on in austin next week",
-        "state": true,
-        "complete": false,
-        "ownerId": null,
-        "updated": null,
-        "objectId": "A0A6F1B2-ACB7-38B9-FF2F-8170F9CA7B00",
-        "__meta": "{\"relationRemovalIds\":{},\"selectedProperties\":[\"important\",\"task\",\"created\",\"due_date\",\"___class\",\"description\",\"state\",\"complete\",\"ownerId\",\"updated\",\"objectId\"],\"relatedObjects\":{}}"
-      },
-
-```
+- have add task btn add task to page and reload page

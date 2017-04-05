@@ -1,4 +1,4 @@
-
+import taskItemView from './task_item_view.js';
 export default function(store){
 
   let state = store.getState();
@@ -22,33 +22,30 @@ export default function(store){
         <input id="important" type="checkbox" name="" value="">
         <button class="add-item" type="button" name="button">Add Task</button>
       </div>
+    </div>`);
 
-    </div>`)
+  var taskItems = state.tasks.map(function(item){
+    return taskItemView(store, item);
+  });
+
+  let $addBtn = $($htmlTasks).find('.add-item');
+
+  $addBtn.on('click', function(e){
+    console.log('add button works');
+    let important = $($htmlTasks).find('#important').val()
+    let task;
+    let date;
+    let started;
+    let complete;
+    let description;
+    console.log(important);
+    // store.dispatch({
+    //   // type:"ADD_TO_LIST",
+    //
+    // })
+  })
 
 
-
-    function taskItemView(item){
-      let $htmlTaskItem = $(`
-        <li>
-
-
-
-          <button class="del-btn">X</button>
-          <span class="task-name">${item.task}</span>
-          <span class="exclamation"> ! </span><br>
-          <span class="description">${item.description}</span><br>
-          <button class="started">Started?</button>
-
-          <button class="completed">Completed?</button>
-        </li>`)
-        //code for button
-
-      return $htmlTaskItem;
-    }
-
-    var taskItems = state.tasks.map(function(item, i, arr){
-      return taskItemView(item);
-    });
 
 
 

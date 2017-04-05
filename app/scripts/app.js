@@ -1,6 +1,7 @@
 import { createStore } from 'redux'
 import loginView from './login-view.js'
 import tasksView from './task-view.js'
+import taskItemView from './task_item_view.js'
 export default function app() {
   const url = 'http://api.backendless.com/v1';
   const appId = '892747C4-CCC9-E96F-FF91-006B50E61400';
@@ -81,6 +82,23 @@ export default function app() {
         // console.log(newState);
         return Object.assign({}, currentState, newState);
 
+      case "ADD_TO_LIST":
+        $.ajax({
+          url: url + '/data/task_table',
+          method: "POST",
+          data: JSON.stringify({
+            important: action.important,
+            task: action.task,
+            due_date: action.date,
+            started: action.started,
+            complete: action.completed,
+            description: action.description
+          })
+        }).then(function(task,i,arr){
+          //dispatch something that updates page
+        })
+
+
 
       case "NOOP":
         return currentState;
@@ -99,34 +117,6 @@ export default function app() {
   }
   store.subscribe(render);
   store.dispatch({type:'NOOP'})
-
-
-//
-  // $.ajax({
-  //   url: url + "/v1/users/login",
-  //   method: 'POST',
-  //   headers: {
-  //     "application-id": appId,
-  //     "secret-key": restKey,
-  //     "Content-Type": "application/json",
-  //     "application-type": "REST"
-  //   },
-  //   data: {
-  //     "login": undefined,
-  //     "password": undefined
-  //   }
-  //
-  // }).then(function(data,i,arr){
-  //   console.log(data);
-  // })
-//
-
-  //------login view-----------
-
-  //----task view----------------
-
-
-
 
 
 }//end of export
