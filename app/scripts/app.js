@@ -1,15 +1,20 @@
 import { createStore } from 'redux'
+import  loginView from './login-view.js'
 export default function app() {
   const url = 'http://api.backendless.com/v1';
   const appId = '892747C4-CCC9-E96F-FF91-006B50E61400';
   const restKey = '30D82F23-700A-52A1-FF7B-1BC275C5F700';
 
-  const userLogin = {
-    user: null,
-    token: null,
-  }
+  // const userLogin = {
+  //   user: null,
+  //   token: null,
+  // }
 
   const initialState = {
+    userInfo: {
+      email: null,
+      token: null
+    },
     taskName: null,
     description: null,
     state: false,
@@ -25,25 +30,42 @@ export default function app() {
 
     switch(action.type){
       case "VALIDATE_USER":
-
       $.ajax({
-        url: url + "/users/login",
-        method: 'POST',
-        headers: {
-          "application-id": appId,
-          "secret-key": restKey,
-          "Content-Type": "application/json",
-          "application-type": "REST"
-        },
-        data: JSON.stringify({
-          login: action.user,
-          password: action.password
-        })
-
-      }).then(function(data,success,xhr){
+          url: url + "/users/login",
+          method: 'POST',
+          headers: {
+            "application-id": appId,
+            "secret-key": restKey,
+            "Content-Type": "application/json",
+            "application-type": "REST"
+          },
+          data: JSON.stringify({
+            login: action.user,
+            password: action.password
+          })
+        }).then(function(data,success,xhr){
         console.log(data);
-        console.log(success);
+        store.dispatch({
+          type:"USER_LOGGED_IN",
+          user: data.email,
+          token: data["user-token"]})
       })
+      return currentState
+
+      case "USER_LOGGED_IN":
+      //load data
+        var newState = {
+          userInfo: {
+            email: action.user,
+            token: action.token,
+          }
+        }//end of new state
+        console.log(newState);
+        return Object.assign({}, currentState, newState);
+
+
+
+
 
 
 
@@ -98,36 +120,28 @@ export default function app() {
 //
 
   //------login view-----------
-  function loginView(store){
-    let $htmlLogin = $(`
-      <div class="login-card">
-        <label for="username">Use Your Email To Log In</label>
-        <input id="username" type="email" name="" value="">
-        <label for="password">The password is possibly "password"</label>
-        <input id="password" type="password" name="" value="">
-        <button>Enter</button>
+
+  //----task view----------------
+  function taskView(store){
+    let $htmlTasks = $(`
+      <div class="task-card">
+        <h4>My To Do List</h4>
+        <ul class="list">
+        </ul>
+        <label for="add-task-btn">Add more to your list!</label>
+        <input class="add-task-btn" type="text" name="" value="">
+        <button type="button" name="button">Add</button>
       </div>`)
 
 
-
-
-    $($htmlLogin).find('button').on('click', function(e){
-      let $user = $($htmlLogin).find('#username').val();
-      let $pw = $($htmlLogin).find('#password').val();
-      store.dispatch({type:"VALIDATE_USER", user: $user, password: $pw})
-
-    })
-
-
-    return $htmlLogin
-
-  }//end of loginView
-
-  function taskView(store){
-    let $htmlTasks = $(``)
+    let $htmlTaskItem = $(`
+      <li>
+        <button class="del-btn">X</button>
+        <span="task-name">task name</span>
+      </li`)
 
     return $htmlTasks
-  }
+  }//end of taskView
 
 
 

@@ -1,0 +1,26 @@
+.task-card{
+  border: 2px solid;
+  text-align: center;
+  width: 50%;
+  margin: 5rem auto;
+  display: block;
+  ul {
+    list-style: none;
+    margin-right: 3rem;
+  }
+  input {
+    margin: 1rem auto;
+    font-size: 1rem;
+    display: block;
+  }
+  label {
+    display: block;
+  }
+
+  * {
+    margin: 1rem;
+  }
+
+
+
+}
