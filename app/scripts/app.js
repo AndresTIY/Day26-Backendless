@@ -79,7 +79,7 @@ export default function app() {
           tasks: action.tasks,
           view: tasksView
         };
-        // console.log(newState);
+        console.log(newState);
         return Object.assign({}, currentState, newState);
 
       case "ADD_TO_LIST":
