@@ -1,14 +1,11 @@
 import { createStore } from 'redux'
 import  loginView from './login-view.js'
+import tasksView from './task-view.js'
 export default function app() {
   const url = 'http://api.backendless.com/v1';
   const appId = '892747C4-CCC9-E96F-FF91-006B50E61400';
   const restKey = '30D82F23-700A-52A1-FF7B-1BC275C5F700';
 
-  // const userLogin = {
-  //   user: null,
-  //   token: null,
-  // }
 
   const initialState = {
     userInfo: {
@@ -44,33 +41,45 @@ export default function app() {
             password: action.password
           })
         }).then(function(data,success,xhr){
-        console.log(data);
+        console.log(success);
         store.dispatch({
           type:"USER_LOGGED_IN",
           user: data.email,
           token: data["user-token"]})
       })
-      return currentState
+        return currentState
 
       case "USER_LOGGED_IN":
-      //load data
+        $.ajax({
+        url: url + "/data/task_table",
+        method: "GET",
+        headers: {
+          "application-id": appId,
+          "secret-key": restKey
+        }
+      }).then(function(data){
+        store.dispatch({
+          type: "TASKS_LOADED",
+          user: action.user,
+          token: action.token,
+          tasks: data.data
+        })
+        console.log(data.data);
+      });
+        return currentState
+
+
+      case "TASKS_LOADED":
         var newState = {
           userInfo: {
             email: action.user,
             token: action.token,
-          }
-        }//end of new state
+          },
+          tasks: action.tasks,
+          view: tasksView
+        };
         console.log(newState);
         return Object.assign({}, currentState, newState);
-
-
-
-
-
-
-
-      case "LOGIN_USER":
-        var newState;
 
 
       case "NOOP":
@@ -91,14 +100,7 @@ export default function app() {
   store.subscribe(render);
   store.dispatch({type:'NOOP'})
 
-//   $.ajax({
-//   url: url + "/task_mgmt",
-//   method: "GET",
-//   headers: {
-//     "application-id": appId,
-//     "secret-key": restKey
-//   }
-// })
+
 //
   // $.ajax({
   //   url: url + "/v1/users/login",
@@ -122,26 +124,7 @@ export default function app() {
   //------login view-----------
 
   //----task view----------------
-  function taskView(store){
-    let $htmlTasks = $(`
-      <div class="task-card">
-        <h4>My To Do List</h4>
-        <ul class="list">
-        </ul>
-        <label for="add-task-btn">Add more to your list!</label>
-        <input class="add-task-btn" type="text" name="" value="">
-        <button type="button" name="button">Add</button>
-      </div>`)
 
-
-    let $htmlTaskItem = $(`
-      <li>
-        <button class="del-btn">X</button>
-        <span="task-name">task name</span>
-      </li`)
-
-    return $htmlTasks
-  }//end of taskView
 
 
 

@@ -2,9 +2,9 @@ export default function (store){
   let $htmlLogin = $(`
     <div class="login-card">
       <label for="username">Use Your Email To Log In</label>
-      <input id="username" type="email" name="" value="" autofocus>
+      <input id="username" type="email" name="" value="user@example.com" autofocus>
       <label for="password">The password is possibly "password"</label>
-      <input id="password" type="password" name="" value="">
+      <input id="password" type="password" name="" value="password">
       <button>Enter</button>
     </div>`)
 

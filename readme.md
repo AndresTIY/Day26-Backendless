@@ -28,12 +28,9 @@
 - User Actions/Inputs will occur on each Views?
 - What endpoints will I use to access/persist data?
 
-1) First, set up backendless
-- Login as a user
-- Request data from server
-- Save record to db
 
-2) MVC
+
+##### MVC
 MODEL
 - user: string noun
 - token
@@ -42,6 +39,7 @@ MODEL
 - state: boolean
 - important: boolean
 - due date: string or numbers
+- AJAX CALLS
 VIEW
 - login view
   - has a username and password input fields, login button
@@ -53,3 +51,35 @@ VIEW
 CONTROLLER
 - when: user clicks login
 - what: user sees task page
+
+Currently Working On
+- task view
+
+Questions
+- a task should have blah blah and state. what is state in this context?
+
+
+
+
+DATA LOOKS LIKE
+```js
+{
+  {
+    "offset": 0,
+    "data": [
+      {
+        "important": true,
+        "task": "find meetup events for next week",
+        "created": 1491420359000,
+        "due_date": 1491670800000,
+        "___class": "task_table",
+        "description": "look up events going on in austin next week",
+        "state": true,
+        "complete": false,
+        "ownerId": null,
+        "updated": null,
+        "objectId": "A0A6F1B2-ACB7-38B9-FF2F-8170F9CA7B00",
+        "__meta": "{\"relationRemovalIds\":{},\"selectedProperties\":[\"important\",\"task\",\"created\",\"due_date\",\"___class\",\"description\",\"state\",\"complete\",\"ownerId\",\"updated\",\"objectId\"],\"relatedObjects\":{}}"
+      },
+
+```
