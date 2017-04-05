@@ -1,12 +1,22 @@
 .task-card{
-  border: 2px solid;
   text-align: center;
   width: 50%;
   margin: 5rem auto;
   display: block;
+  background: $color-purple;
+  box-shadow: 10px 10px;
+  padding: 1rem;
+  h3 {
+    margin-bottom: 3rem;
+  }
   ul {
     list-style: none;
     margin-right: 3rem;
+  }
+  li {
+    border: 2px solid $color-violet;
+    background: $color-pinkish;
+    padding: .5rem 0;
   }
   input {
     margin: 1rem auto;
@@ -18,7 +28,15 @@
   }
 
   * {
-    margin: 1rem;
+    margin: .5rem;
+  }
+  .task-name {
+    font-size: 1.5rem;
+  }
+  .description{
+    font-size: .8rem;
+
+
   }
 
 

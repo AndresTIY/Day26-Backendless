@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import  loginView from './login-view.js'
+import loginView from './login-view.js'
 import tasksView from './task-view.js'
 export default function app() {
   const url = 'http://api.backendless.com/v1';
@@ -64,7 +64,7 @@ export default function app() {
           token: action.token,
           tasks: data.data
         })
-        console.log(data.data);
+        // console.log(data.data);
       });
         return currentState
 
@@ -78,7 +78,7 @@ export default function app() {
           tasks: action.tasks,
           view: tasksView
         };
-        console.log(newState);
+        // console.log(newState);
         return Object.assign({}, currentState, newState);
 
 

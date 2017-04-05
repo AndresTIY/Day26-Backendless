@@ -53,7 +53,7 @@ CONTROLLER
 - what: user sees task page
 
 Currently Working On
-- task view
+- task view, retrieving data from state, looping through it and plugging it in the taskItem 
 
 Questions
 - a task should have blah blah and state. what is state in this context?
