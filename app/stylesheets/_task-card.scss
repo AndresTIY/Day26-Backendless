@@ -1,14 +1,12 @@
 .task-card{
   text-align: center;
-  width: 50%;
+  width: 80%;
   margin: 5rem auto;
   display: block;
   background: $color-purple;
   box-shadow: 10px 10px;
   padding: 1rem;
-  h3 {
-    margin-bottom: 3rem;
-  }
+
   ul {
     list-style: none;
     margin-right: 3rem;
@@ -17,18 +15,34 @@
     border: 2px solid $color-violet;
     background: $color-pinkish;
     padding: .5rem 0;
+
+    .started, .completed{
+      margin: .5rem 2rem;
+    }
+    .exclamation {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff00ff;
+    }
   }
   input {
     margin: 1rem auto;
     font-size: 1rem;
     display: block;
   }
-  label {
+  .form button {
+    color: $color-yellowish;
+    background: $color-pinkish;
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    border-style: none;
+    border-radius: .5rem;
     display: block;
-  }
+    margin: 0 auto;
 
-  * {
-    margin: .5rem;
+  }
+  .form label, input {
+    display: inline-block;
   }
   .task-name {
     font-size: 1.5rem;
