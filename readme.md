@@ -17,7 +17,7 @@
 - Need to save a record to the Database
 - To make any requests to backendless, I will need these 3 things that need to be stored in the app somewhere
   - backendless endpoint URL:
-    http://api.backendless.com/v1/data/task_mgmt(i think?)
+    http://api.backendless.com/v1/data/task_mgmt
   - application ID: 892747C4-CCC9-E96F-FF91-006B50E61400
   - REST secret key: 30D82F23-700A-52A1-FF7B-1BC275C5F700
 
@@ -30,7 +30,8 @@
 
 
 
-##### MVC
+#### MVC
+
 MODEL
 - user: string noun
 - token
@@ -47,16 +48,13 @@ VIEW
   - has a username and password input fields, login button
 - task page view
   - has task name, description, state, important, due date
-- task view
-  -
+
 
 CONTROLLER
 - when: user clicks login
 - what: user sees task page
+- need to model out actions effeciently
 
 Currently Working On
-- add other list items like due date, important, state?
-
-Questions
-- del btn after that
-- add/hide important tag
+- add/hide Important Tag
+- make complete button functional
