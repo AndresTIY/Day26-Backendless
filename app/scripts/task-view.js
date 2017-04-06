@@ -17,7 +17,7 @@ export default function(store){
         <input placeholder="new task" class="add-task" type="text" name="" value="">
         <input placeholder="task description" class="add-desc" type="text" name="" value=""><br>
         <label for="due-date">Due Date</label>
-        <input class="due-date" type="datetime-local" name="" value="">
+        <input class="due-date" type="date" name="" value="">
         <label for="important">Make this a priority?</label>
         <input id="important" type="checkbox" />
         <button class="add-item" type="button" name="button">Add Task</button>
@@ -32,17 +32,18 @@ export default function(store){
 
   $addBtn.on('click', function(e){
     console.log('add button works');
-    let important = $($htmlTasks).find('#important').is(':checked')
-    let task;
-    let date;
-    let started;
-    let complete;
-    let description;
-    console.log("1", important);
-    // store.dispatch({
-    //   // type:"ADD_TO_LIST",
-    //
-    // })
+    let important = $($htmlTasks).find('#important').is(':checked');
+    let task = $($htmlTasks).find('.add-task').val();
+    let date = $($htmlTasks).find('.due-date').val();
+    let description = $($htmlTasks).find('.add-desc').val();
+
+    store.dispatch({
+      type:"ADD_TO_LIST",
+      important: important,
+      task: task,
+      date: date,
+      description: description
+    })
   })
 
 

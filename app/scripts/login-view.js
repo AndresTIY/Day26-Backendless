@@ -14,6 +14,7 @@ export default function (store){
   $($htmlLogin).find('button').on('click', function(e){
     let $user = $($htmlLogin).find('#username').val();
     let $pw = $($htmlLogin).find('#password').val();
+
     store.dispatch({type:"VALIDATE_USER", user: $user, password: $pw})
 
   })

@@ -6,6 +6,14 @@ export default function app() {
   const url = 'http://api.backendless.com/v1';
   const appId = '892747C4-CCC9-E96F-FF91-006B50E61400';
   const restKey = '30D82F23-700A-52A1-FF7B-1BC275C5F700';
+  const settingsGet = {
+      url: url + "/data/task_table",
+      method: "GET",
+      headers: {
+        "application-id": appId,
+        "secret-key": restKey
+      }
+    }
 
 
   const initialState = {
@@ -51,14 +59,7 @@ export default function app() {
         return currentState
 
       case "USER_LOGGED_IN":
-        $.ajax({
-        url: url + "/data/task_table",
-        method: "GET",
-        headers: {
-          "application-id": appId,
-          "secret-key": restKey
-        }
-      }).then(function(data){
+        $.ajax(settingsGet).then(function(data){
         store.dispatch({
           type: "TASKS_LOADED",
           user: action.user,
@@ -86,16 +87,21 @@ export default function app() {
         $.ajax({
           url: url + '/data/task_table',
           method: "POST",
+          headers: {
+            "application-id": appId,
+            "secret-key": restKey,
+            "Content-Type": "application/json",
+            "application-type": "REST"
+          },
           data: JSON.stringify({
             important: action.important,
             task: action.task,
             due_date: action.date,
-            started: action.started,
-            complete: action.completed,
             description: action.description
           })
-        }).then(function(task,i,arr){
-          //dispatch something that updates page
+        }).then(function(task,success,xhr){
+          store.dispatch({type:"USER_LOGGED_IN"})
+
         })
 
 

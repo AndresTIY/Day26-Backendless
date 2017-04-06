@@ -34,12 +34,14 @@
 MODEL
 - user: string noun
 - token
-- taskName: string noun , falls under what is a task
-- description: string
-- state: boolean
-- important: boolean
-- due date: string or numbers
 - AJAX CALLS
+- Task: String
+- Started: Boolean
+- Important: Boolean
+- Due Date: Date and Time
+- Description: string
+- Complete: Boolean
+
 VIEW
 - login view
   - has a username and password input fields, login button
@@ -56,7 +58,5 @@ Currently Working On
 - add other list items like due date, important, state?
 
 Questions
-
-- have add task btn send data
-
-- have add task btn add task to page and reload page
+- don't forget about due date!
+- del btn after that
