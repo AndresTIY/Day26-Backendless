@@ -31,7 +31,7 @@ export default function(store){
   let $addBtn = $($htmlTasks).find('.add-item');
 
   $addBtn.on('click', function(e){
-    console.log('add button works');
+
     let important = $($htmlTasks).find('#important').is(':checked');
     let task = $($htmlTasks).find('.add-task').val();
     let date = $($htmlTasks).find('.due-date').val();

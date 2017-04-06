@@ -16,6 +16,7 @@ export default function app() {
     }
 
 
+
   const initialState = {
     userInfo: {
       email: null,
@@ -66,7 +67,6 @@ export default function app() {
           token: action.token,
           tasks: data.data
         })
-        // console.log(data.data);
       });
         return currentState
 
@@ -80,7 +80,7 @@ export default function app() {
           tasks: action.tasks,
           view: tasksView
         };
-        console.log(newState);
+
         return Object.assign({}, currentState, newState);
 
       case "ADD_TO_LIST":
@@ -103,6 +103,22 @@ export default function app() {
           store.dispatch({type:"USER_LOGGED_IN"})
 
         })
+        return currentState;
+
+      case "DELETE_ITEM":
+        var item = action.item;
+        $.ajax({
+          url: `${url}/data/task_table/${item.objectId}`,
+          method: "DELETE",
+          headers: {
+            "application-id": appId,
+            "secret-key": restKey
+          }
+        }).then(function(data){
+          store.dispatch({type:"USER_LOGGED_IN"})
+        })
+
+        return currentState;
 
 
 

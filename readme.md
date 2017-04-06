@@ -58,5 +58,5 @@ Currently Working On
 - add other list items like due date, important, state?
 
 Questions
-- don't forget about due date!
 - del btn after that
+- add/hide important tag
